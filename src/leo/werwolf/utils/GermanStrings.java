@@ -96,6 +96,15 @@ public class GermanStrings extends Strings {
 	}
 
 	@Override
+	public String goToBed(Class<? extends Player> clazz, Iterator<Player> players) {
+		if (players.count() == 1) {
+			return "%s schläft wieder ein.".formatted(getName(clazz));
+		} else {
+			return "Die %s schlafen wieder ein.".formatted(getNamePlural(clazz));
+		}
+	}
+
+	@Override
 	public String getName(Class<? extends Player> clazz) {
 		return switch (clazz.getSimpleName()) {
 			case "Villager" -> "Dorfbewohner";
@@ -239,13 +248,13 @@ public class GermanStrings extends Strings {
 	}
 
 	@Override
-	public String goToBed(Class<? extends Player> clazz) {
-		return "%s/%s schläft wieder ein.".formatted(getName(clazz), getNamePlural(clazz));
-	}
-
-	@Override
 	public String examplePlayer(GameData data) {
 		return "Bitte gib einen Spieler ein.\nBeispiel: %s"
 				.formatted(data.players.get(random.nextInt(data.players.size())));
+	}
+
+	@Override
+	public String redLadyVisits(Player visiting) {
+		return random("Du übernachtest heute bei %s.", "Viel Spaß bei %s.").formatted(visiting.name);
 	}
 }

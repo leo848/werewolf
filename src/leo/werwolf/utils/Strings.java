@@ -4,7 +4,6 @@ import leo.rustjava.iterator.Iterator;
 import leo.werwolf.GameData;
 import leo.werwolf.players.Player;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -38,11 +37,9 @@ public abstract class Strings {
 
 	public abstract String pressEnter();
 
-	public abstract String wakeUp(Class<? extends Player> clazz, Iterator<Player> players);
-
 	public abstract String getName(Class<? extends Player> clazz);
-	public abstract String getNamePlural(Class<? extends Player> clazz);
 
+	public abstract String getNamePlural(Class<? extends Player> clazz);
 	public abstract String ambiguousName(String input, GameData data);
 
 	public abstract String seerPrompt();
@@ -56,6 +53,10 @@ public abstract class Strings {
 	public abstract String dayBegins();
 
 	public abstract String nightBegins();
+
+	public abstract String wakeUp(Class<? extends Player> clazz, Iterator<Player> players);
+
+	public abstract String goToBed(Class<? extends Player> clazz, Iterator<Player> players);
 
 	public abstract String roleAssign();
 
@@ -87,7 +88,7 @@ public abstract class Strings {
 
 	public abstract String noPotions();
 
-	public abstract String goToBed(Class<? extends Player> clazz);
-
 	public abstract String examplePlayer(GameData data);
+
+	public abstract String redLadyVisits(Player visiting);
 }

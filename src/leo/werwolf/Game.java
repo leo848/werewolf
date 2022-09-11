@@ -9,7 +9,7 @@ import leo.werwolf.utils.Strings;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
 import static leo.rustjava.Result.*;
 import static leo.rustjava.Unit.Unit;
 import static leo.rustjava.iterator.Iterators.from;
@@ -58,7 +58,7 @@ public class Game {
 	}
 
 	private List<Player> night() {
-		Prompts.waitForInput(strings.nightBegins());
+		Prompts.waitForInput(strings.nightBegins() + "\n");
 
 		wakeUp(RedLady.class);
 
@@ -79,13 +79,11 @@ public class Game {
 		var livingPlayers = data.alivePlayers().filter(clazz::isInstance);
 
 		if (livingPlayers.copy().count() == 0 && !Player.callIfNone(clazz)) return;
-		else {
-			out.println(strings.wakeUp(clazz, livingPlayers.copy()));
-		}
+		out.println(strings.wakeUp(clazz, livingPlayers.copy()));
 
 		livingPlayers.copy().forEach(p -> p.action(data));
 
-		out.println(strings.goToBed(clazz) + "\n");
+		out.println(strings.goToBed(clazz, livingPlayers.copy()) + "\n");
 	}
 
 
